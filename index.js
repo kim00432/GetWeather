@@ -16,20 +16,22 @@ const dailyInfo = document.querySelector(".dailyInfo")
 // You should replace this with your own application logic.
 const app = {
   location: " ",
+  interval: null, 
   init: async function() {
     let locationName = JSON.parse(localStorage.getItem("location"))
+    let weatherData = JSON.parse(localStorage.getItem("weather-data"))
     
     if(!locationName) {
+       //When this app start at the first, weather data of default location will be shown up 
       locationName = "Nepean"
-      const forecast = await getForecast(DEFAULT_OPTIONS.coord);
-      localStorage.setItem("weather-data", JSON.stringify(forecast))
-      localStorage.setItem("location",  JSON.stringify(locationName))
       console.log("default location :", locationName)
-    }
-    await app.getLocalStorageData()
+    } 
+
+    await app.getWeatherData(locationName)
     await app.getCurrentLocation() //ready to load 
     app.addEventListeners()
-    
+    setInterval(app.init, 1000000)
+  
   },
   getCurrentLocation: (ev) => {
     let opts = {
@@ -100,11 +102,9 @@ const app = {
   capitalizeFirstLetter: (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   },
-  
   // Current weather info 
   currentWeatherInfo: (location, data) => {
     let img = createWeatherIcon(data.weather[0].icon, data.weather[0].main)
-
     console.log(data)
   
     //Updated time 
