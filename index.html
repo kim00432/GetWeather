@@ -3,11 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather | C1</title>
-  </head>
-  <body>
-    <div id="root"></div>
-
-    <script src="index.js" type="module"></script>
-  </body>
-</html>
+      <!-- Compiled and minified CSS -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
+      <!-- Compiled and minified JavaScript -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <link rel="stylesheet" href="./main.css">
+      <title>Weather | C1</title>
+    </head>
+    <body>
+      <header>
+        <img class="logo" src="https://img.icons8.com/ios-glyphs/64/000000/fog-day--v1.png"/>
+        <h5>Get Weather</h5>
+      </header>
+     <main>
+       <div class="form-container">
+        <form id="form">
+          <div class="input-field">
+            <input id="searchInput" type="search" placeholder="Search by City, State, and Country" required>
+          </div>
+        </form>
+       </div>
+        <div>
+          <button id="hourly">Hourly</button>
+          <button id="daily">Daily</button>
+        </div>
+        <div class="currentInfo">current</div>
+        <div class="hourlyInfo">hourly</div>
+        <div class="dailyInfo">daily</div>
+      </main>
+      <script src="./index.js" type="module"></script>
+    </body>
+  </html>
