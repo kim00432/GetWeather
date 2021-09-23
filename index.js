@@ -59,11 +59,13 @@ const app = {
   addEventListeners: () => {
     hourlyButton.addEventListener("click", (ev) => {
       ev.preventDefault()
-      app.hourlyWeatherInfo()
+      hourlyInfo.classList.remove("hidden")
+      dailyInfo.classList.add("hidden")
     })
     dailyButton.addEventListener("click", (ev) => {
       ev.preventDefault()
-      app.dailyWeatherInfo()
+      dailyInfo.classList.remove("hidden")
+      hourlyInfo.classList.add("hidden")
     })
 
   },
