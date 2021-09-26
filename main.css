@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+
 *,
 *::before,
 *::after {
@@ -6,6 +8,237 @@
   box-sizing: border-box;
 }
 
+body {
+  min-height: 100vh;
+  width: 100%;
+  margin: 0;
+  font-family: "Noto Sans JP", Arial, Helvetica, sans-serif;
+  background: linear-gradient(
+      to right,
+      rgba(252, 252, 252, 0.744) 10%,
+      rgba(255, 254, 254, 0.737)
+    ),
+    url("https://images.unsplash.com/photo-1591804227855-d6fe0b648d0e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=644&q=80");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+header {
+  background-color: rgba(53, 157, 249);
+  box-shadow: 8px 5px 13px -1px rgba(28, 29, 35, 0.3);
+  color: hsl(20, 40%, 100%);
+  height: 9vh;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.logo {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  margin: 10px;
+}
+
+header h5 {
+  margin: 0;
+}
+
+.form-container {
+  width: 80%;
+}
+
+#form {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 5px 0;
+}
+
+#form .input-field {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 0.5px solid #000;
+  border-radius: 50px;
+  padding-left: 10px;
+  color: rgba(179, 180, 179, 0.504);
+}
+
+div.input-field {
+  background-color: rgba(255, 255, 255, 0.449);
+}
+
+div.input-field .material-icons {
+  color: black;
+}
+
+#searchInput {
+  width: 70vw;
+  border-bottom: none;
+  margin: 0;
+}
+
+.currentInfo {
+  border-radius: 30px;
+  padding: 10px;
+  margin-bottom: 1.5rem;
+  box-shadow: 8px 5px 13px -1px rgba(28, 29, 35, 0.3);
+  background-color: rgba(53, 157, 249, 0.23);
+}
+
+.updatedTime {
+  margin-left: 15px;
+  font-size: 11px;
+}
+
+.current-info div {
+  font-size: 13px;
+  margin-top: 5px;
+  text-align: left;
+}
+
+.currentInfoCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentInfoCard .temp {
+  margin: 0;
+  font-size: 2.3em;
+}
+
+.current-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.current-title {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  color: #233469;
+}
+
+.location_on {
+  margin-right: 7px;
+}
+
+.current-image {
+  margin: -10px;
+  width: 130px;
+}
+
+.current-info2 {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.current-info2 .current-info2-detail {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#current:hover {
+  color: #1b6d65;
+}
+
+#hourly,
+#daily {
+  border-radius: 15px;
+  width: 5em;
+  height: 1.5em;
+  border-style: none;
+}
+
+.hourlyInfo,
+.dailyInfo {
+  border-radius: 20px;
+  background-color: rgba(179, 180, 179, 0.504);
+  padding: 8px;
+  box-shadow: 8px 5px 13px -1px rgba(87, 88, 89, 0.148);
+  margin-bottom: 10px;
+}
+
+.hourlyInfoCard,
+.dailyInfoCard {
+  display: flex;
+  flex-direction: column;
+  border-right: 0.5px solid rgba(13, 13, 13, 0.216);
+}
+
+.hourlyInfoCard:last-child,
+.dailyInfoCard:last-child {
+  border: none;
+}
+
+.hourlyInfoCards,
+.dailyInfoCards {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+}
+
+.icons {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 80%;
+  column-gap: 5%;
+}
+
+.info-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.weatherIcon {
+  width: 100%;
+  margin: -10px 0;
+}
+
+.info-title {
+  font-size: 13px;
+  margin: 0;
+}
+
+.info-text {
+  font-size: 11px;
+  margin: 0;
+}
+
+/* extra class */
 .hidden {
   display: none;
+}
+
+.clickedColor {
+  background-color: #2ab7a9;
+  color: #f8f9fa;
+}
+
+.unClickedColor {
+  background-color: #f8f9fa;
+  color: #212529;
 }

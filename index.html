@@ -17,23 +17,25 @@
         <img class="logo" src="https://img.icons8.com/ios-glyphs/64/000000/fog-day--v1.png"/>
         <h5>Get Weather</h5>
       </header>
-     <main id="root">
-       <div class="form-container">
-        <form id="form">
-          <div class="input-field">
-            <input id="searchInput" type="search" placeholder="Search by City, State, and Country" required>
-          </div>
-        </form>
-       </div>
-        <div class="icons">
-          <i id="current" class="material-icons">gps_fixed</i>
-          <button id="hourly">Hourly</button>
-          <button id="daily">Daily</button>
+      <main id="root">
+        <div class="form-container">
+          <form id="form">
+            <div class="input-field">
+              <i class="material-icons">search</i>
+              <input id="searchInput" type="search" placeholder="Search by City, State, and Country" required>
+            </div>
+          </form>
         </div>
-        <div class="currentInfo">current</div>
-        <div class="hourlyInfo">hourly</div>
-        <div class="dailyInfo hidden">daily</div>
-      </main>
+          <div class="icons">
+            <i id="current" class="material-icons">gps_fixed</i>
+            <button id="hourly" class="clickedColor">Hourly</button>
+            <button id="daily" class="uncheckedColor">Daily</button>
+          </div>
+          <div class="currentInfo container">current</div>
+          <div class="hourlyInfo container">hourly</div>
+          <div class="dailyInfo container hidden">daily</div>
+        </main>
+      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcy4FuJbZAxcUlIxXAkbMAjOMDY33hp0w&libraries=places"></script> -->
       <script src="./index.js" type="module"></script>
     </body>
   </html>

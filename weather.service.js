@@ -60,12 +60,12 @@ async function fetchForecast({ coord: { lat, lon }, units }) {
  * the OpenWeather image corresponding to the given `iconCode`.
  * @param {string} iconCode
  */
-export function createWeatherIcon(iconCode) {
-  let img = document.createElement('img');
+ export function createWeatherIcon (iconCode, main) {
+  let img = document.createElement('img')
   img.setAttribute(
     'src',
-    'https://openweathermap.org/img/w/' + iconCode + '.png'
-  );
-  img.setAttribute('alt', '');
-  return img;
+    'https://openweathermap.org/img/wn/' + iconCode + '@4x.png'
+  )
+  img.setAttribute('alt', main)
+  return img
 }
