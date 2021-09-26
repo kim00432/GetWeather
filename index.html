@@ -3,18 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <!-- Compiled and minified CSS -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-      <!-- Compiled and minified JavaScript -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-      <link rel="stylesheet" href="./main.css">
-      <title>Weather | C1</title>
+    <meta name="description" content="A simple HTML5 app to allow the user to look up weather forecasts for various locations">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./main.css">
+    <title>Weather | C1</title>
     </head>
     <body>
       <header>
-        <img class="logo" src="https://img.icons8.com/ios-glyphs/64/000000/fog-day--v1.png"/>
+        <img class="logo" src="https://img.icons8.com/ios-glyphs/64/000000/fog-day--v1.png" alt="logo"/>
         <h5>Get Weather</h5>
       </header>
       <main id="root">
@@ -28,14 +26,13 @@
         </div>
           <div class="icons">
             <i id="current" class="material-icons">gps_fixed</i>
-            <button id="hourly" class="clickedColor">Hourly</button>
-            <button id="daily" class="uncheckedColor">Daily</button>
+            <button id="hourly" class="hidden">Next 6 hours</button>
+            <button id="daily">Next 6 days</button>
           </div>
           <div class="currentInfo container">current</div>
           <div class="hourlyInfo container">hourly</div>
           <div class="dailyInfo container hidden">daily</div>
         </main>
-      <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcy4FuJbZAxcUlIxXAkbMAjOMDY33hp0w&libraries=places"></script> -->
       <script src="./index.js" type="module"></script>
     </body>
   </html>
