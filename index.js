@@ -26,6 +26,7 @@ const app = {
       const coord = {lat, lon}
       const forecast = await getForecast({coord})
       localStorage.setItem("weather-data", JSON.stringify(forecast))
+      console.log("Already data in local storage and show a recent weather")
       await app.getLocalStorageData()
     }
   
@@ -46,7 +47,7 @@ const app = {
     let lat = pos.coords.latitude
     let lon = pos.coords.longitude
     DEFAULT_OPTIONS.coord = { lat: lat, lon: lon }
-    console.log(DEFAULT_OPTIONS)
+    // console.log(DEFAULT_OPTIONS)
   },
   wtf: (err) => {
     console.error(err);   //geolocation failed
@@ -73,10 +74,10 @@ const app = {
     searchedLocation.addEventListener("click", (ev) => {
       ev.preventDefault();
       autocomplete.addListener("place_changed", function () {
-        app.location = searchedLocation.value 
-        console.log("Search location :", app.location)
-        searchForm.addEventListener("submit", app.getWeatherData(app.location))
         const place = autocomplete.getPlace();
+        const locality = place.address_components[0].long_name
+        app.getWeatherData(locality)
+        console.log("Search: ", locality)
         if (!place.geometry) {
           // User entered the name of a Place that was not suggested and
           // pressed the Enter key, or the Place Details request failed.
@@ -88,6 +89,7 @@ const app = {
     //if the data in LocalStorage was updated on a different tab, update the current tab
      window.addEventListener('storage', () => {
         app.getLocalStorageData()
+        console.log("Update storage because of other tab")
     })
   })
 },
@@ -112,7 +114,7 @@ const app = {
   //get data from local storage
   getLocalStorageData: () => {
     let weatherData = JSON.parse(localStorage.getItem("weather-data"))  
-    console.log(weatherData)
+    console.log("Local storage: ", weatherData)
     app.currentWeatherInfo(weatherData)
     app.hourlyWeatherInfo(weatherData)
     app.dailyWeatherInfo(weatherData)
