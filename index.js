@@ -73,9 +73,9 @@ const app = {
     searchedLocation.addEventListener("click", (ev) => {
       ev.preventDefault();
       autocomplete.addListener("place_changed", function () {
-        app.location = searchedLocation.value
-        console.log("Search location :", searchedLocation.value)
-        searchForm.addEventListener("submit", app.getWeatherData(searchedLocation.value))
+        app.location = searchedLocation.value 
+        console.log("Search location :", app.location)
+        searchForm.addEventListener("submit", app.getWeatherData(app.location))
         const place = autocomplete.getPlace();
         if (!place.geometry) {
           // User entered the name of a Place that was not suggested and
@@ -96,16 +96,13 @@ const app = {
     ev.preventDefault()
     const currentCityName = await getLocationName(DEFAULT_OPTIONS.coord)
     const forecast = await getForecast(DEFAULT_OPTIONS.coord)
-
     localStorage.setItem("location", currentCityName)
     localStorage.setItem("weather-data", JSON.stringify(forecast))
     await app.getLocalStorageData()
-
-    console.log(forecast)
+    // console.log(forecast)
   },
   //get location's weather data from api server 
   getWeatherData: async function (location) {
-    console.log(location)
     const coord = await getGeolocation(location)
     const forecast = await getForecast({coord}) 
     localStorage.setItem("weather-data", JSON.stringify(forecast))
@@ -114,8 +111,8 @@ const app = {
   },
   //get data from local storage
   getLocalStorageData: () => {
-    let locationName = localStorage.getItem("location")
     let weatherData = JSON.parse(localStorage.getItem("weather-data"))  
+    console.log(weatherData)
     app.currentWeatherInfo(weatherData)
     app.hourlyWeatherInfo(weatherData)
     app.dailyWeatherInfo(weatherData)
