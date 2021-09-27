@@ -31,13 +31,13 @@ const app = {
   
     app.addEventListeners() 
     await app.getCurrentLocation()
-    setInterval(app.init, 100000) //update data after 100000 seconds 
+    setInterval(app.init, 1800000) //update data per 30 min
   },
   getCurrentLocation: (ev) => {
     let opts = {
       enableHighAccuracy: true,
       timeout: 1000 * 10, //10 seconds
-      maximumAge: 1000 * 60 * 5, //5 minutes
+      maximumAge: 1000 * 60 * 5, //5 minutes 
     };
     navigator.geolocation.getCurrentPosition(app.ftw, app.wtf, opts);
   },
@@ -72,9 +72,9 @@ const app = {
     //get a search location 
     searchedLocation.addEventListener("click", (ev) => {
       ev.preventDefault();
-      app.location = searchedLocation.value
-      console.log("Search location :", searchedLocation.value)
       autocomplete.addListener("place_changed", function () {
+        app.location = searchedLocation.value
+        console.log("Search location :", searchedLocation.value)
         searchForm.addEventListener("submit", app.getWeatherData(searchedLocation.value))
         const place = autocomplete.getPlace();
         if (!place.geometry) {
@@ -116,18 +116,17 @@ const app = {
   getLocalStorageData: () => {
     let locationName = localStorage.getItem("location")
     let weatherData = JSON.parse(localStorage.getItem("weather-data"))  
-    app.currentWeatherInfo(locationName, weatherData)
-    app.hourlyWeatherInfo(locationName, weatherData)
-    app.dailyWeatherInfo(locationName, weatherData)
+    app.currentWeatherInfo(weatherData)
+    app.hourlyWeatherInfo(weatherData)
+    app.dailyWeatherInfo(weatherData)
     app.changeBackground(weatherData.current.weather[0].main)
   },
   capitalizeFirstLetter: (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   },
   //current weather info 
-  currentWeatherInfo: (location, data) => {
+  currentWeatherInfo: (data) => {
     let img = createWeatherIcon(data.current.weather[0].icon, data.current.weather[0].main)
-    console.log(data.current)
     let locationDisplay = localStorage.getItem("location").split(",")
   
     //updated time - local, current
@@ -188,10 +187,9 @@ const app = {
     //clean up the page
     currentInfo.innerHTML = " " 
     currentInfo.append(div)
-    console.log(location, data)
   },
   //hourly weather info 
-  hourlyWeatherInfo: (location, data) =>{
+  hourlyWeatherInfo: (data) =>{
     hourlyInfo.innerHTML = " "
     let div = document.createElement("div")
     div.setAttribute("class", "hourlyForecast")
@@ -228,10 +226,9 @@ const app = {
       div1.append(div2)
       hourlyInfo.append(div, div1)
     }
-    console.log(location, data.hourly)
   },
   //daily weather info
-  dailyWeatherInfo: (location, data) => {
+  dailyWeatherInfo: (data) => {
     dailyInfo.innerHTML= " "
     let div = document.createElement("div")
     div.setAttribute("class", "dailyForecast")
@@ -254,7 +251,6 @@ const app = {
       div1.append(div2)
       dailyInfo.append(div, div1)
       }
-    console.log(location, data.daily)
   },
   //change Background Image by weather 
   changeBackground: (data) => {
