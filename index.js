@@ -17,7 +17,7 @@ const app = {
     let weatherData = JSON.parse(localStorage.getItem("weather-data"))
     //if there isn't anything in local storage, default location will be shown up   
     if (!weatherData) {
-      console.log("Default location: ", app.location)
+      console.log("Default location:", app.location)
       app.getWeatherData(app.location)
     } else {
       //new data update
@@ -29,7 +29,7 @@ const app = {
       console.log("Already data in local storage and show a recent weather")
       await app.getLocalStorageData()
     }
-  
+
     app.addEventListeners() 
     await app.getCurrentLocation()
     setInterval(app.init, 1800000) //update data per 30 min
@@ -54,7 +54,6 @@ const app = {
   },
   addEventListeners: () => {
     //click events
-    let autocomplete = new google.maps.places.Autocomplete(searchedLocation)
     currentButton.addEventListener("click", app.clickCurrentLocation)
     hourlyButton.addEventListener("click", (ev) => {
       ev.preventDefault()
@@ -70,28 +69,26 @@ const app = {
       hourlyButton.classList.remove("hidden")
       hourlyInfo.classList.add("hidden")
     })
-    //get a search location 
-    searchedLocation.addEventListener("click", (ev) => {
-      ev.preventDefault();
-      autocomplete.addListener("place_changed", function () {
-        const place = autocomplete.getPlace();
-        const locality = place.address_components[0].long_name
-        app.getWeatherData(locality)
-        console.log("Search: ", locality)
-        if (!place.geometry) {
-          // User entered the name of a Place that was not suggested and
-          // pressed the Enter key, or the Place Details request failed.
-          window.alert("No details available for input: '" + place.name + "'");
-          return;
-        }
-      searchForm.reset();
+    //get a search location - use google autocomplete
+    const autocomplete = new google.maps.places.Autocomplete(searchedLocation)
+    autocomplete.addListener("place_changed", function () {
+      const place = autocomplete.getPlace();
+      const locality = place.address_components[0].long_name
+      console.log("Search location:", locality)
+      if (!place.geometry) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+      }
+      app.getWeatherData(locality)
+      searchedLocation.value= " "
     })
-    //if the data in LocalStorage was updated on a different tab, update the current tab
+     //if the data in LocalStorage was updated on a different tab, update the current tab
      window.addEventListener('storage', () => {
-        app.getLocalStorageData()
-        console.log("Update storage because of other tab")
+      app.getLocalStorageData()
+      console.log("Update local storage because of other tab")
     })
-  })
 },
   //click the current location icon
   clickCurrentLocation: async function (ev) {
@@ -105,6 +102,7 @@ const app = {
   },
   //get location's weather data from api server 
   getWeatherData: async function (location) {
+    console.log("Get a recent weather info")
     const coord = await getGeolocation(location)
     const forecast = await getForecast({coord}) 
     localStorage.setItem("weather-data", JSON.stringify(forecast))
@@ -114,7 +112,7 @@ const app = {
   //get data from local storage
   getLocalStorageData: () => {
     let weatherData = JSON.parse(localStorage.getItem("weather-data"))  
-    console.log("Local storage: ", weatherData)
+    console.log("Local storage:", weatherData)
     app.currentWeatherInfo(weatherData)
     app.hourlyWeatherInfo(weatherData)
     app.dailyWeatherInfo(weatherData)
@@ -130,7 +128,7 @@ const app = {
   
     //updated time - local, current
     const dt = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: `${data.timezone}`, timeZoneName: "short" }).slice(0, 28)
-    const dt2 = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" }).slice(0, 25)
+    const dt2 = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" }).slice(0, 28)
     
     localStorage.setItem("local-date", dt)
     localStorage.setItem("current-date", dt2)

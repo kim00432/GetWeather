@@ -22,6 +22,6 @@ export async function getLocationName (location) {
   const city = JSON.stringify(data.address.city)
   const str = JSON.parse(city)
   
-  console.log(str)
+  console.log("Current location:", str)
   return str
 }
