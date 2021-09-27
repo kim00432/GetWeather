@@ -12,13 +12,16 @@ export async function getGeolocation(location) {
   return { lat: data[0].lat, lon: data[0].lon };
 }
 
-export async function getGeolocationInfo (location) {
+export async function getLocationName (location) {
   const url = `${BASE_URL}/reverse.php?key=${API_TOKEN}&lat=${location.lat}&lon=${location.lon}&format=json`
   const response = await fetch(url)
   if (!response.ok) {
     throw new Error(response.statusText)
   }
   const data = await response.json()
-  console.log (data)
-  return { City: data.address.city, Country: data.address.country_code.toUpperCase() }
+  const city = JSON.stringify(data.address.city)
+  const str = JSON.parse(city)
+  
+  console.log(str)
+  return str
 }
