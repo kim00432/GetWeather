@@ -131,8 +131,8 @@ const app = {
     let locationDisplay = localStorage.getItem("location").split(",")
   
     //updated time - local, current
-    const dt = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: `${data.timezone}`, timeZoneName: "short" }).slice(0, 28)
-    const dt2 = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" }).slice(0, 28)
+    const dt = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZone: `${data.timezone}`, timeZoneName: "short" })
+    const dt2 = new Date(data.current.dt * 1000).toLocaleString('en-US', {  weekday: "long", month: "short", day: "numeric", hour: "2-digit", minute: "2-digit", timeZoneName: "short" })
     
     localStorage.setItem("local-date", dt)
     localStorage.setItem("current-date", dt2)
