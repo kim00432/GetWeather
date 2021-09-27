@@ -94,6 +94,15 @@ div.input-field .material-icons {
   margin: 0;
 }
 
+#searchInput:focus {
+  border-bottom: none !important;
+  box-shadow: 0 0px 0 0 transparent !important;
+}
+
+#searchInput:focus + label {
+  color: none !important;
+}
+
 .icons {
   margin-bottom: 20px;
   display: flex;
@@ -101,6 +110,29 @@ div.input-field .material-icons {
   justify-content: flex-end;
   width: 80%;
   column-gap: 5%;
+}
+
+/* autocomplete */
+.pac-icon {
+  display: none;
+}
+
+.pac-item {
+  padding: 4px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pac-item:hover {
+  background-color: #ececec;
+}
+
+.pac-item-query {
+  font-size: 14px;
+}
+
+.pac-container {
+  width: 65vw !important;
 }
 
 /* current weather */

@@ -78,7 +78,7 @@ const app = {
       const place = autocomplete.getPlace();
       console.log(place)
       const locality = place.formatted_address
-      console.log("Search location:", locality)
+      console.log("Searched location:", locality)
       if (!place.geometry) {
         // User entered the name of a Place that was not suggested and
         // pressed the Enter key, or the Place Details request failed.
@@ -91,7 +91,7 @@ const app = {
      //if the data in LocalStorage was updated on a different tab, update the current tab
      window.addEventListener('storage', () => {
       app.getLocalStorageData()
-      console.log("Update local storage because of other tab")
+      console.log("Update the local storage data because of other tab")
     })
 },
   //click the current location icon
