@@ -70,15 +70,19 @@ const app = {
       hourlyInfo.classList.add("hidden")
     })
     //get a search location - use google autocomplete
-    const autocomplete = new google.maps.places.Autocomplete(searchedLocation)
+    let options = {
+      types: ['(regions)']
+    }
+    const autocomplete = new google.maps.places.Autocomplete(searchedLocation, options)
     autocomplete.addListener("place_changed", function () {
       const place = autocomplete.getPlace();
-      const locality = place.address_components[0].long_name
+      console.log(place)
+      const locality = place.formatted_address
       console.log("Search location:", locality)
       if (!place.geometry) {
         // User entered the name of a Place that was not suggested and
         // pressed the Enter key, or the Place Details request failed.
-        window.alert("No details available for input: '" + place.name + "'");
+        window.alert("No details available for input: '" + place.name + "'")
         return;
       }
       app.getWeatherData(locality)
