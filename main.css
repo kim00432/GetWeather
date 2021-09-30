@@ -182,8 +182,8 @@ div.input-field .material-icons {
 .current-title {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
-  color: #233469;
+  font-size: 2rem;
+  color: rgb(8, 49, 124);
 }
 
 .location_on {
@@ -212,6 +212,7 @@ div.input-field .material-icons {
 
 .current-info2-title {
   font-weight: 700;
+  color: rgb(7, 23, 97);
 }
 
 .current-info2 .current-info2-detail {
@@ -222,12 +223,11 @@ div.input-field .material-icons {
 }
 
 #current {
-  color: rgb(24, 1, 7);
+  color: rgb(255, 255, 255);
 }
 
-#current:hover,
-#current:focus {
-  color: #ff0202cb;
+#current:hover {
+  color: #c90a0a9a;
 }
 
 /* hourly, daily weather */
@@ -245,7 +245,7 @@ div.input-field .material-icons {
 }
 
 #daily {
-  background-color: #666464ce;
+  background-color: #807f7fc0;
 }
 
 .hourlyInfo,
@@ -325,11 +325,11 @@ div.input-field .material-icons {
   .current-title {
     margin: 10px 5px 5px 5px;
   }
-  .currentInfoCard .temp {
+  h4.temp {
     font-size: 1.8rem;
   }
   .current-info1 .description {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 }
 
