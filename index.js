@@ -150,9 +150,10 @@ const app = {
             <img src="${img.src}" alt="${img.alt}" class="current-image">
           </div>
           <div class="current-info1">
-            <h4 class="temp">${data.current.temp}&degC</h4>
+            <h4 class="temp">${data.current.temp.toFixed()}&degC</h4>
             <div class="description">
-              <span class="text">Feels like: ${data.current.feels_like}&degC</span> 
+              <span class="text">High: ${data.daily[0].temp.max.toFixed()}&deg / Low: ${data.daily[0].temp.min.toFixed()}&deg</span> 
+              <span class="text">Feels like: ${data.current.feels_like.toFixed()}&deg</span> 
               <span class="text">${app.capitalizeFirstLetter(data.current.weather[0].description)}</span>
             </div>
           </div>
@@ -221,7 +222,7 @@ const app = {
         <div class="info-body">
           <h5 class="info-title">${newDt}</h5>
           <img src="${img.src}" class="weatherIcon" alt="${img.alt}">
-          <p class="info-text">${data.hourly[i].temp}&degC</p>
+          <p class="info-text">${data.hourly[i].temp.toFixed()}&deg</p>
         </div>
       `
       div1.append(div2)
@@ -246,7 +247,7 @@ const app = {
         <div class="info-body">
           <h5 class="info-title">${dt}</h5>
           <img src="${img.src}" class="weatherIcon" alt="${img.alt}">
-          <p class="info-text">${data.daily[i].temp.day}&degC</p>
+          <p class="info-text">${data.daily[i].temp.min.toFixed()}&deg / ${data.daily[i].temp.max.toFixed()}&deg</p>
         </div>
       `
       div1.append(div2)

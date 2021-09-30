@@ -155,8 +155,8 @@ div.input-field .material-icons {
 }
 
 .currentInfo div {
-  margin-top: 5px;
-  margin-bottom: 3px;
+  margin-top: 3px;
+  margin-bottom: 2px;
   text-align: left;
 }
 
@@ -323,10 +323,14 @@ div.input-field .material-icons {
 
   /* current */
   .current-title {
-    margin: 10px 5px 5px 5px;
+    margin: 8px 5px 20px 5px;
   }
   h4.temp {
     font-size: 1.8rem;
+  }
+  .currentInfo div {
+    margin-top: 2px;
+    margin-bottom: 2px;
   }
   .current-info1 .description {
     font-size: 0.95rem;
@@ -340,5 +344,9 @@ div.input-field .material-icons {
     gap: 2rem;
     font-size: 1rem;
     color: rgba(28, 29, 35, 0.788);
+  }
+  .currentInfo div {
+    margin-top: 5px;
+    margin-bottom: 3px;
   }
 }
