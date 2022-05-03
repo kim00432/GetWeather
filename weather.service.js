@@ -1,6 +1,6 @@
 'use strict';
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/onecall';
-const API_KEY = 'bbda2189692790bc9a6543db1e3e0ce9'; //Please use your own API KEY
+const API_KEY = '95a971ead0fea4c9a60fe6ca69d2e5ac'; //Please use your own API KEY
 export const DEFAULT_OPTIONS = {
   coord: { lon: -75.76, lat: 45.35 }, // Algonquin College
   units: 'metric',
